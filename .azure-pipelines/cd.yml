@@ -34,6 +34,9 @@ jobs:
               inputs:
                 artifactName: drop
                 targetPath: '$(Pipeline.Workspace)/target'
+            - script: |
+                sudo apt install tree
+                tree $(Pipeline.Workspace)
 
         deploy:
           steps:
