@@ -20,4 +20,5 @@ jobs:
       - task: PublishPipelineArtifact@1
         inputs:
           artifact: drop
+          targetPath: '$(Build.SourcesDirectory)/target'
 
