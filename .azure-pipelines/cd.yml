@@ -23,6 +23,8 @@ jobs:
           targetPath: '$(Build.SourcesDirectory)/target'
 
   - deployment: DeployToVM
+    dependsOn: test
+    condition: succeeded()
     environment: my-azure-vm
     strategy:
       runOnce:
