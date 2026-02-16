@@ -13,7 +13,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        Javalin app = Javalin.create().start(7000);
+        Javalin app = Javalin.create().start(80);
 
         app.get("/", ctx -> ctx.result("hello"));
         app.get("/works", ctx -> ctx.result("it works"));
