@@ -22,3 +22,23 @@ jobs:
           artifact: drop
           targetPath: '$(Build.SourcesDirectory)/target'
 
+  - deployment: DeployToVM
+    environment: my-azure-vm
+    strategy:
+      runOnce:
+        preDeploy:
+          steps:
+            - task: DownloadPipelineArtifact@2
+              inputs:
+                artifactName: drop
+                targetPath: '$(Pipeline.Workspace)/target'
+
+        deploy:
+          steps:
+            - task: CopyFilesOverSSH@0
+              inputs:
+                sshEndpoint: 'My vm SSH'
+                sourceFolder: '$(Pipeline.Workspace)/target'
+                targetFolder: '~/app'
+          
+
